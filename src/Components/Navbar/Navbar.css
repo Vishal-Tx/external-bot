@@ -1,0 +1,15 @@
+.pageLinks {
+  font-weight: 800;
+  border-radius: 0;
+  text-transform: capitalize;
+}
+
+.pageLinks:nth-child(3) {
+  color: grey;
+  border-bottom: 2px solid black;
+}
+
+.pageLinks:hover {
+  border-bottom: 2px solid black;
+  background-color: white;
+}
