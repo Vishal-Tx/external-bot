@@ -50,8 +50,9 @@ function Navbar() {
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
-              fontWeight: 700,
+              fontWeight: 800,
               color: "black",
+              fontSize: "22px",
               textDecoration: "none",
             }}
           >
@@ -113,9 +114,13 @@ function Navbar() {
                   my: 2,
                   color: "black",
                   display: "block",
-                  fontWeight: "600",
+                  fontWeight: "800",
                   borderRadius: 0,
-                  transform: "capitalize",
+                  mx: "2px",
+                  textTransform: "capitalize",
+                  "&:hover": {
+                    backgroundColor: "white",
+                  },
                 }}
               >
                 {page}
@@ -164,11 +169,28 @@ function Navbar() {
             <AccountCircleIcon sx={{ margin: "5px", fontSize: "35px" }} />
             <Button
               variant="outlined"
-              sx={{ color: "grey", border: "1px solid grey ", mx: "5px" }}
+              sx={{
+                color: "grey",
+                border: "1px solid grey ",
+                mx: "5px",
+                "&:hover": {
+                  border: " 1px solid black",
+                  color: "black",
+                  backgroundColor: "white",
+                },
+              }}
             >
               Login
             </Button>
-            <Button variant="contained" sx={{ backgroundColor: "black" }}>
+            <Button
+              variant="contained"
+              sx={{
+                backgroundColor: "black",
+                "&:hover": {
+                  backgroundColor: "grey",
+                },
+              }}
+            >
               Sign Up
             </Button>
           </Box>

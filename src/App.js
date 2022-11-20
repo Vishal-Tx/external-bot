@@ -1,10 +1,11 @@
 import React from "react";
-import { Navbar } from "./Components";
+import { ExternalBot, Navbar } from "./Components";
 
 const App = () => {
   return (
     <div>
       <Navbar />
+      <ExternalBot />
     </div>
   );
 };
