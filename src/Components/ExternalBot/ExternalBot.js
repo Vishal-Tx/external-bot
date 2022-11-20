@@ -5,18 +5,37 @@ import "./ExternalBot.css";
 import { Field, Form, Formik } from "formik";
 import * as yup from "yup";
 import RadioButtons from "./RadioButtons/RadioButtons";
+import InteractionNotification from "../InteractionNotification/InteractionNotification";
+import BotMessage from "../BotMessage/BotMessage";
 
 const ExternalBot = () => {
   const defaultValues = {
     initiate: "",
+    Report2User: "",
+    Report2Mail: "",
+    WelcomeMessage: "",
+    InstructionMessage: "",
+    CompletionMessage: "",
+    BotMessage: "",
   };
 
   const validationSchema = yup.object().shape({
     initiate: yup.string().required("Please select User."),
+    Report2User: yup.string().required("Please select User."),
+    Report2Mail: yup.string().required("This field cannot be Empty.."),
+    WelcomeMessage: yup.string().required("Welcome Message cannot be Empty.."),
+    InstructionMessage: yup
+      .string()
+      .required("Instruction Message cannot be Empty.."),
+    CompletionMessage: yup
+      .string()
+      .required("Completion Message cannot be Empty.."),
+    BotMessage: yup.string().required("Bot Message cannot be Empty.."),
   });
 
   const handleSubmit = (values) => {
     console.log("values", values);
+    alert({ ...values });
   };
   return (
     <Container sx={{ mt: "50px" }}>
@@ -44,7 +63,8 @@ const ExternalBot = () => {
               className="bot_shadow_box"
               sx={{
                 mt: "35px",
-                pb: "45px",
+                pb: "35px",
+                mb: "35px",
               }}
             >
               <Grid
@@ -122,6 +142,18 @@ const ExternalBot = () => {
               </Grid>
               <RadioButtons />
             </Container>
+            <Grid
+              container
+              spacing={{ xs: 2, md: 2 }}
+              columns={{ sm: 12, xs: 6 }}
+            >
+              <Grid item xs={6}>
+                <InteractionNotification errors={errors} touched={touched} />
+              </Grid>
+              <Grid item xs={6}>
+                <BotMessage errors={errors} touched={touched} />
+              </Grid>
+            </Grid>
             <Box
               sx={{ display: "flex", justifyContent: "flex-end", mt: "30px" }}
             >
