@@ -38,9 +38,10 @@ const ExternalBot = () => {
     phoneNo: yup.string().required("Please Upload a Phone Number List.."),
   });
 
-  const handleSubmit = (values) => {
+  const handleSubmit = (values, action) => {
     console.log("values", values);
-    alert({ ...values });
+    alert(JSON.stringify(values, null, 2));
+    action.resetForm();
   };
   return (
     <Container sx={{ mt: "50px" }}>
