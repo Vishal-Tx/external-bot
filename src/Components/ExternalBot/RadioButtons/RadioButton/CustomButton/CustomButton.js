@@ -1,6 +1,5 @@
-import { Box } from "@mui/material";
 import { Field } from "formik";
-import React, { useState } from "react";
+import React from "react";
 import "./CustomButton.css";
 
 const CustomButton = ({ id, choice }) => {
