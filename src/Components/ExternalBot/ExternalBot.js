@@ -17,12 +17,16 @@ const ExternalBot = () => {
     InstructionMessage: "",
     CompletionMessage: "",
     BotMessage: "",
+    phoneNo: "",
   };
 
   const validationSchema = yup.object().shape({
     initiate: yup.string().required("Please select User."),
-    Report2User: yup.string().required("Please select User."),
-    Report2Mail: yup.string().required("This field cannot be Empty.."),
+    Report2User: yup.string().required("Please Enter Email."),
+    Report2Mail: yup
+      .string()
+      .required("This field cannot be Empty..")
+      .email("Please enter valid Email."),
     WelcomeMessage: yup.string().required("Welcome Message cannot be Empty.."),
     InstructionMessage: yup
       .string()
@@ -31,6 +35,7 @@ const ExternalBot = () => {
       .string()
       .required("Completion Message cannot be Empty.."),
     BotMessage: yup.string().required("Bot Message cannot be Empty.."),
+    phoneNo: yup.string().required("Please Upload a Phone Number List.."),
   });
 
   const handleSubmit = (values) => {
@@ -64,7 +69,7 @@ const ExternalBot = () => {
               sx={{
                 mt: "35px",
                 pb: "35px",
-                mb: "35px",
+                mb: "22px",
               }}
             >
               <Grid
@@ -86,6 +91,7 @@ const ExternalBot = () => {
                       height: "35px",
                       border: "1px solid grey",
                       padding: "4px",
+                      fontSize: "15px",
                     }}
                   >
                     <option value="" disabled>
@@ -100,44 +106,57 @@ const ExternalBot = () => {
                 </Grid>
                 <Grid item xs={6}>
                   <label style={{ fontWeight: "600" }}>Phone Number List</label>
-                  <input
+                  <Field
                     type="file"
-                    name="file"
+                    name="phoneNo"
                     style={{
                       display: "block",
                       width: "100%",
                       height: "33px",
                       alignItems: "center",
                       border: "1px solid grey",
-                      marginBottom: "10px",
+                      fontSize: "25px",
                     }}
                   />
-                  <Button
-                    variant="outlined"
-                    sx={{
-                      color: "grey",
-                      border: "1px solid grey ",
-                      mr: "5px",
-                      "&:hover": {
-                        border: " 1px solid black",
-                        color: "black",
-                        backgroundColor: "white",
-                      },
-                    }}
-                  >
-                    View List
-                  </Button>
-                  <Button
-                    variant="contained"
-                    sx={{
-                      backgroundColor: "black",
-                      "&:hover": {
-                        backgroundColor: "grey",
-                      },
-                    }}
-                  >
-                    Upload
-                  </Button>
+                  {errors.phoneNo && touched.phoneNo ? (
+                    <div
+                      style={{
+                        color: "red",
+                        marginBottom: "5px",
+                        marginTop: 0,
+                      }}
+                    >
+                      {errors.phoneNo}
+                    </div>
+                  ) : null}
+                  <Box sx={{ mt: "15px" }}>
+                    <Button
+                      variant="outlined"
+                      sx={{
+                        color: "grey",
+                        border: "1px solid grey ",
+                        mr: "5px",
+                        "&:hover": {
+                          border: " 1px solid black",
+                          color: "black",
+                          backgroundColor: "white",
+                        },
+                      }}
+                    >
+                      View List
+                    </Button>
+                    <Button
+                      variant="contained"
+                      sx={{
+                        backgroundColor: "black",
+                        "&:hover": {
+                          backgroundColor: "grey",
+                        },
+                      }}
+                    >
+                      Upload
+                    </Button>
+                  </Box>
                 </Grid>
               </Grid>
               <RadioButtons />
@@ -155,7 +174,12 @@ const ExternalBot = () => {
               </Grid>
             </Grid>
             <Box
-              sx={{ display: "flex", justifyContent: "flex-end", mt: "30px" }}
+              sx={{
+                display: "flex",
+                justifyContent: "flex-end",
+                mt: "30px",
+                mb: "30px",
+              }}
             >
               <Button
                 variant="outlined"

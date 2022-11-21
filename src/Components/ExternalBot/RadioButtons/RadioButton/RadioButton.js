@@ -1,9 +1,12 @@
-import { Grid, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import { Field } from "formik";
-import React from "react";
+import React, { useState } from "react";
+import CustomButton from "./CustomButton/CustomButton";
+import "./RadioButtons.css";
 
 const RadioButton = ({ radio }) => {
-  const { name, choices } = radio;
+  const { name, choices, id } = radio;
+
   return (
     <Grid item xs={12} sm={6} md={4}>
       <Typography sx={{ fontWeight: "600", mt: "13px", mb: "5px" }}>
@@ -12,12 +15,8 @@ const RadioButton = ({ radio }) => {
       {choices.map(({ Icon, choice }, index) => {
         return (
           <label key={index} style={{ width: "140px", display: "flex" }}>
-            <Field
-              type="radio"
-              name={name}
-              value={choice}
-              style={{ marginRight: "10px", display: "flex" }}
-            ></Field>
+            <CustomButton id={id} choice={choice} />
+
             <Typography>{Icon}</Typography>
             <Typography sx={{ display: "flex", marginLeft: "7px" }}>
               {choice}
