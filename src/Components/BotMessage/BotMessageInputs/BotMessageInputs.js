@@ -16,8 +16,8 @@ const BotMessageInputs = ({ errors, touched, field }) => {
           border: "1px solid grey",
           marginTop: "8px",
           marginBottom: "8px",
-          padding: "3px",
-          fontSize: "17px",
+          fontSize: "19px",
+          padding: "3px 0 0 8px",
         }}
       />
       {errors[`${fieldValue}`] && touched[`${fieldValue}`] ? (
